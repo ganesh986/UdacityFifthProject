@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Neighbourhood App</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <h1>My favourite Restaurants</h1>
+  <div class="app" id="app">
+    <div class="side-bar" id="side-bar">
+      <h3>Search restaurants:</h3>
+      <input class="search" id="search" data-bind="textInput: searchTerm, valueUpdate: 'afterkeydown'" />
+      <hr>
+      <ul class="list-elem" id="list-elem" data-bind="foreach: filteredElem">
+        <li class="location" id="location" data-bind="text: title, click: jump"></li>
+      </ul>
+    </div>
+    <div class="map" id="map">Error loading Google Maps. Please refresh your page.</div>
+  </div>
+  <script src='js/knockout-3.4.2.js'></script>
+  <script src='js/jquery-3.2.1.js'></script>
+  <script src='js/app.js'></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=MYKEY&callback=startApp&libraries=places" onerror="errorMap()"></script>
+  </body>
+</html>
