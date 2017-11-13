@@ -69,11 +69,12 @@ var styles = [
 
 var restaurants = [
 	{title: 'Spaghetti Notte',location:{lat: 44.286234,lon: 11.880963}},
-	{title: 'Marianaza',location:{lat: 44.284288,lon: 11.883672}},
-	{title: 'Il Turismo',location:{lat: 44.284807,lon: 11.881587}},
+	// {title: 'Marianaza',location:{lat: 44.284288,lon: 11.883672}},
+	{title: 'Pizzeria Il Girasole 2',location:{lat: 44.294520,lon: 11.87561}},
+  {title: 'Il Turismo',location:{lat: 44.284807,lon: 11.881587}},
 	{title: 'Silverio',location:{lat: 44.286702,lon: 11.878769}},
 	{title: 'Zingarò',location:{lat: 44.288390,lon: 11.883024}},
-	{title: 'Osteria Ristorante La Baita',location:{lat: 44.288302,lon: 11.883443}}];
+	{title: 'La Magnuga',location:{lat: 44.293003,lon: 11.866133}}];
 
 var map;
 var clientID;
@@ -176,7 +177,12 @@ var Location = function(data) {
             Please check your internet connection and try again.");
       }
     });
+    // Animate marker when infowindow open
 	  self.largeInfoWindow.open(map, this);
+    self.marker.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(function() {
+          self.marker.setAnimation(null);
+      }, 1800);
 	});
   
 	this.jump = function(place) {
@@ -208,8 +214,8 @@ function AppViewModel() {
 
 
 	map = new google.maps.Map(document.getElementById('map'), {
-	    center: {lat: 44.286, lng: 11.883},
-	    zoom: 16,
+	    center: {lat: 44.292, lng: 11.880},
+	    zoom: 15,
 	    styles: styles,
 	    mapTypeControl: false
 
@@ -250,6 +256,6 @@ function startApp() {
 	ko.applyBindings(new AppViewModel());
 }
 
-function errorHandling() {
+function errorMap() {
 	alert("Error loading Google Maps. Please refresh your page.");
 }
